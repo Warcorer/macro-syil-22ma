@@ -31,7 +31,7 @@
 // IF YOU NEED TO SPECIFY MORE TOOLS, ADD VARIABLES INCREMENTING BY 1, THEN UPDATE THE MAIN PROGRAM TO CHECK THOSE NEWLY ADDED VARIABLES.
 #200:=0;
 #201:=0;
-#202:=4;
+#202:=0;
 #203:=0;
 #204:=0;
 
@@ -50,11 +50,14 @@ IF (@502 <> 0 AND @502 <> #100 AND @502 <> #101 AND @502 <> #102 AND @502 <> #10
     ENDIF;
 END_IF;
 
+WAIT();
+
 // LOOP OVER ALL TOOLS AND MEASURE
 FOR #4 := 0 TO 15 BY 1.0 DO
     IF (@[503 + #4] <> 0 AND @[503 + #4] <> #100 AND @[503 + #4] <> #101 AND @[503 + #4] <> #102 AND @[503 + #4] <> #103 AND @[503 + #4] <> #104) THEN
         T@[503 + #4] M06;
-        IF (@[503 + #4] <> @200 AND @[503 + #4] <> @201 AND @[503 + #4] <> @202 AND @[503 + #4] <> @203 AND @[503 + #4] <> @204) THEN
+        WAIT();
+        IF (@[503 + #4] <> #200 AND @[503 + #4] <> #201 AND @[503 + #4] <> #202 AND @[503 + #4] <> #203 AND @[503 + #4] <> #204) THEN
             IF (#1 == 0) THEN
                 G65P9921M21.C0.;
             ELSE
@@ -62,12 +65,15 @@ FOR #4 := 0 TO 15 BY 1.0 DO
             ENDIF;
         ELSE
             IF (#1 == 0) THEN
-                //G65P9921M21.C0.;
+                // TODO: RETRIEVE TOOL DIAMETER AND PASS TO D VARIABLE
+                G65P9921M21.C0.A0.D2.Q1.;
             ELSE
                 //G65P7002T@502;
             ENDIF;
         ENDIF;
     END_IF;
+
+    WAIT();
 END_FOR;
 
 M99;

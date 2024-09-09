@@ -1,17 +1,17 @@
 # Marcos for Syil/Syntec
 
 ## Start Here
-To use these marcos, follow the steps below:
+To use these macros, follow the steps below:
 1. Download and copy the macro(s) to a USB drive.
 1. Plug the USB drive into the controller.
-1. On the controller, go to `Settings`, `System admin`, `Marco manager`, `Import`.
+1. On the controller, go to `Settings`, `System admin`, `Macro manager`, `Import`.
 1. Select the macro(s) and import them into the controller, no reboot necessary.
-1. Marcos can be invoked via MDI, e.g., `G65P8000`.
-1. Marcos can also be invoked via NC program in auto mode.
+1. Macros can be invoked via MDI, e.g., `G65P8000`.
+1. Macros can also be invoked via NC program in auto mode.
 
 
 ## O8000 Unload all tools
-Marco to unload all the tools in the machine.
+Macro to unload all the tools in the machine.
 
 * It will load tools into spindle, and prompt operator to unload the tool.
 * Upon unloading the tool, it will update and remove the tool from the tool table.
